@@ -16,8 +16,9 @@ configurations {
 dependencies {
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.mockito:mockito-core:5.9.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.9.0'
 }
 
 testing {

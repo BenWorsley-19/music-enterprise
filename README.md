@@ -3,6 +3,7 @@
 The code here is structured and written so to provide an example of an enterprise-like codebase to showcase OO design 
 and styles of tests for those who have not had much experience working in such codebases. I have not used a framework
 here or ORM to keep the codebase simple and easy to understand.
+I have provided some thoughts in the code base in the form of comments/docs with "NOTE:" next to them.
 
 ## Code problem statement
 You work for a very popular music streaming service. Your product manager wants to implement a "Quick Listens" 
@@ -14,7 +15,13 @@ such as 12:24.
 
 The code here delivers this requirement though interacting with a MySQL database.
 
-## Prerequisites
+## Prerequisites and set up
 
 - java 17+
 - gradle 7.2+
+- Set up the database following these instructions: https://github.com/lerocha/chinook-database?tab=readme-ov-file
+  (It is on my TODO list to make this easier with docker)
+- Set up the following environment variables:
+    - MUSIC_ENTERPRISE_DB_URL - e.g. jdbc:mysql://localhost:3306/chinook
+    - MUSIC_ENTERPRISE_DB_USERNAME
+    - MUSIC_ENTERPRISE_DB_PASSWORD
