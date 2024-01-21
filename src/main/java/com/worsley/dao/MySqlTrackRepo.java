@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * This class is an MySQL implementation of {@code TrackRepo}.
+ * This class is a MySQL implementation of {@code TrackRepo}.
  * NOTE: You will often see ORMs used to map database tables to Java objects but
  * for the purposes of this exercise I went with standard JDBC.
  */
