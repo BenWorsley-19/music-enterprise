@@ -2,7 +2,7 @@ package com.worsley.dao;
 
 
 import com.worsley.dao.exception.RepositoryException;
-import com.worsley.model.Track;
+import com.worsley.dto.Track;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,12 +31,13 @@ public class MySqlTrackRepo implements TrackRepo {
     }
 
     @Override
-    public List<Track> getTracksWithRuntimeLessThan(int trackLength) throws RepositoryException {
+    public List<Track> getTracksWithRuntimeLessThan(int trackLength, int maxNoOfTracks) throws RepositoryException {
         List<Track> tracks = new ArrayList<>();
         try (Connection connection = databaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_TRACKS_OF_RUNTIME_QUERY)) {
             preparedStatement.setString(1, String.valueOf(trackLength));
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                int count = 0;
                 while (resultSet.next()) {
                     Track track = new Track(
                             resultSet.getString("name"),
@@ -45,6 +46,10 @@ public class MySqlTrackRepo implements TrackRepo {
                             resultSet.getString("genre")
                     );
                     tracks.add(track);
+                    count++;
+                    if (count == maxNoOfTracks) {
+                        break;
+                    }
                 }
             }
         }
